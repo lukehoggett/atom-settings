@@ -1,0 +1,67 @@
+"*":
+  editor:
+    invisibles:
+      {}
+    fontFamily: "Ubuntu Mono"
+    showIndentGuide: true
+    softWrap: true
+  core:
+    autoHideMenuBar: true
+    disabledPackages: [
+      "layout-manager"
+      "project-manager"
+      "remember-session"
+      "ternjs"
+      "autocomplete-hack"
+      "markdown-preview"
+    ]
+    audioBeep: false
+    destroyEmptyPanes: false
+    projectHome: "/home/luke"
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  "exception-reporting":
+    userId: "d48a2843-d943-b7dd-aabb-b0ef8faa67b9"
+  welcome:
+    showOnStartup: false
+  linter:
+    "Lint on change": "On"
+  "linter-jshint":
+    jshintExecutablePath: "/usr/bin/jshint"
+  "linter-phpcs":
+    phpExecutablePath: "/usr/bin/php"
+  minimap:
+    plugins:
+      "git-diff": true
+      "highlight-selected": true
+  "remember-session":
+    x: 2638
+    y: 52
+    width: 2006
+    height: 1388
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+    removeTrailingWhitespace: false
+  "apathy-theme":
+    {}
+  "tool-bar":
+    position: "Left"
+    iconSize: "16px"
+  "flex-tool-bar":
+    {}
+  "highlight-selected":
+    {}
+  docblockr:
+    {}
+  "linter-shellcheck":
+    shellcheckExecutablePath: "/usr/bin/shellcheck"
+  "autocomplete-plus":
+    backspaceTriggersAutocomplete: true
+  "git-projects":
+    rootPath: "/home/luke"
+  "atom-ternjs":
+    {}
+  "gist-it":
+    userToken: "d570a034523545662940ef89df469975f6e1a4f4"

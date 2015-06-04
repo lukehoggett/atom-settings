@@ -1,0 +1,11 @@
+[3794:0423/150458:ERROR:browser_main_loop.cc(170)] Running without the SUID sandbox! See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment for more information on developing with the sandbox on.
+App load time: 679ms
+[3852:0423/150459:INFO:renderer_main.cc(212)] Renderer process started
+[3794:0423/150501:INFO:CONSOLE(11)] "activate linter-jshint", source: /home/luke/.atom/packages/linter-jshint/lib/init.coffee (11)
+[3794:0423/150501:INFO:CONSOLE(7)] "activate linter-php", source: /home/luke/.atom/packages/linter-php/lib/init.coffee (7)
+[3794:0423/150501:INFO:CONSOLE(59)] "Window load time: 1572ms", source: file:///usr/share/atom/resources/app.asar/static/index.js (59)
+[3794:0424/100542:INFO:CONSOLE(114)] "Error starting spell check task", source: /usr/share/atom/resources/app.asar/node_modules/spell-check/lib/spell-check-view.js (114)
+[3794:0424/100542:INFO:CONSOLE(114)] "Error starting spell check task", source: /usr/share/atom/resources/app.asar/node_modules/spell-check/lib/spell-check-view.js (114)
+[3794:0424/130136:INFO:CONSOLE(606)] "Error deactivating package 'atom-ternjs'", source: /usr/share/atom/resources/app.asar/src/package.js (606)
+[3794:0424/130136:INFO:CONSOLE(14)] "Uncaught TypeError: Converting circular structure to JSON", source: /usr/share/atom/resources/app.asar/src/storage-folder.js (14)
+[19741:0424/130136:INFO:renderer_main.cc(212)] Renderer process started
