@@ -1,7 +1,7 @@
 {
   "name": "atom-ternjs",
   "main": "./lib/atom-ternjs",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "private": false,
   "description": "Javascript code intelligence for atom with tern.js. Uses suggestion provider by autocomplete-plus.",
   "activationCommands": {},
@@ -44,10 +44,10 @@
     "url": "https://github.com/tststs/atom-ternjs/issues"
   },
   "homepage": "https://github.com/tststs/atom-ternjs",
-  "_id": "atom-ternjs@0.6.3",
-  "_shasum": "adc1dab6a997639d616b54ce0d98c858da245e53",
-  "_resolved": "file:../d-115426-24884-1vcinry/package.tgz",
-  "_from": "../d-115426-24884-1vcinry/package.tgz",
+  "_id": "atom-ternjs@0.6.4",
+  "_shasum": "92df46e52bcd14f533138c323767ac03924c2d91",
+  "_resolved": "file:../d-11559-8789-1gm4ib7/package.tgz",
+  "_from": "../d-11559-8789-1gm4ib7/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -68,7 +68,7 @@
       },
       {
         "name": "acorn",
-        "version": "1.2.1",
+        "version": "1.2.2",
         "path": "node_modules/tern/node_modules/acorn/dist/acorn.js"
       },
       {
@@ -118,13 +118,53 @@
       },
       {
         "name": "tern-lint",
-        "version": "0.1.0",
+        "version": "0.3.0",
         "path": "node_modules/tern-lint/lint.js"
       },
       {
         "name": "acorn",
-        "version": "2.0.1",
+        "version": "1.2.2",
         "path": "node_modules/tern-lint/node_modules/acorn/dist/acorn.js"
+      },
+      {
+        "name": "glob",
+        "version": "3.2.11",
+        "path": "node_modules/tern-lint/node_modules/glob/glob.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/tern-lint/node_modules/glob/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "0.3.0",
+        "path": "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "2.6.4",
+        "path": "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js"
+      },
+      {
+        "name": "sigmund",
+        "version": "1.0.1",
+        "path": "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "0.2.14",
+        "path": "node_modules/tern-lint/node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "2.6.4",
+        "path": "node_modules/tern-lint/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js"
+      },
+      {
+        "name": "sigmund",
+        "version": "1.0.1",
+        "path": "node_modules/tern-lint/node_modules/minimatch/node_modules/sigmund/sigmund.js"
       },
       {
         "name": "underscore-plus",
@@ -204,7 +244,16 @@
         "node_modules/tern-lint/demos/ternjs/tern/defs/jquery.json",
         "node_modules/tern-lint/demos/ternjs/tern/defs/underscore.json",
         "node_modules/tern-lint/node_modules/acorn/package.json",
+        "node_modules/tern-lint/node_modules/glob/node_modules/inherits/package.json",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/package.json",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/sigmund/package.json",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/package.json",
+        "node_modules/tern-lint/node_modules/glob/package.json",
+        "node_modules/tern-lint/node_modules/minimatch/node_modules/lru-cache/package.json",
+        "node_modules/tern-lint/node_modules/minimatch/node_modules/sigmund/package.json",
+        "node_modules/tern-lint/node_modules/minimatch/package.json",
         "node_modules/tern-lint/package.json",
+        "node_modules/tern-lint/scripts/package.json",
         "node_modules/underscore-plus/node_modules/underscore/package.json",
         "node_modules/underscore-plus/package.json",
         "package.json",
@@ -561,6 +610,21 @@
         "node_modules/tern-lint/node_modules/acorn/src/util.js",
         "node_modules/tern-lint/node_modules/acorn/src/walk/index.js",
         "node_modules/tern-lint/node_modules/acorn/src/whitespace.js",
+        "node_modules/tern-lint/node_modules/glob/examples/g.js",
+        "node_modules/tern-lint/node_modules/glob/examples/usr-local.js",
+        "node_modules/tern-lint/node_modules/glob/glob.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/inherits/inherits.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/inherits/inherits_browser.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/inherits/test.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/minimatch.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/sigmund/bench.js",
+        "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js",
+        "node_modules/tern-lint/node_modules/minimatch/minimatch.js",
+        "node_modules/tern-lint/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js",
+        "node_modules/tern-lint/node_modules/minimatch/node_modules/sigmund/bench.js",
+        "node_modules/tern-lint/node_modules/minimatch/node_modules/sigmund/sigmund.js",
+        "node_modules/tern-lint/scripts/git-tag.js",
         "node_modules/underscore-plus/lib/underscore-plus.js",
         "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
         "node_modules/underscore-plus/node_modules/underscore/underscore.js"
@@ -752,12 +816,46 @@
           "node_modules/tern-lint/demos/ternjs/tern/lib",
           "node_modules/tern-lint/demos/ternjs/tern/plugin",
           "node_modules/tern-lint",
+          "node_modules/tern-lint/scripts",
           "node_modules/tern-lint/test",
           "node_modules/tern-lint/test/fixtures"
         ],
         "dependencies": {
           "tern": ">=0.10.0",
-          "acorn": ">=1.0.0"
+          "acorn": ">=1.0.0",
+          "glob": "3",
+          "minimatch": "0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tern-lint/node_modules/glob/examples",
+          "node_modules/tern-lint/node_modules/glob",
+          "node_modules/tern-lint/node_modules/glob/test"
+        ],
+        "dependencies": {
+          "inherits": "2",
+          "minimatch": "0.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tern-lint/node_modules/glob/node_modules/minimatch",
+          "node_modules/tern-lint/node_modules/glob/node_modules/minimatch/test"
+        ],
+        "dependencies": {
+          "lru-cache": "2",
+          "sigmund": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/tern-lint/node_modules/minimatch",
+          "node_modules/tern-lint/node_modules/minimatch/test"
+        ],
+        "dependencies": {
+          "lru-cache": "2",
+          "sigmund": "~1.0.0"
         }
       },
       {

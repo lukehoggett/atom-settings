@@ -1,3 +1,10 @@
+## 0.4.2
+- Fixed bugs
+
+## 0.4.0
+- Support CSON, JSON5 config file
+- ADD show, enable property
+
 ## 0.3.0
 - Add style property
 - Add hide, disable property

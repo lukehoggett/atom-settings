@@ -12,4 +12,6 @@ module.exports =
         @cliStatusView.destroy()
 
     config:
-        'WindowHeight': 300
+        WindowHeight:
+            type: 'integer'
+            default: 300

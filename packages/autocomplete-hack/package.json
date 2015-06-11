@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-hack",
   "main": "./lib/autocomplete-hack",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "HackLang AutoCompletion for Atom Editor.",
   "repository": {
     "type": "git",
@@ -25,27 +25,34 @@
       }
     }
   },
+  "consumedServices": {
+    "atom-hack": {
+      "versions": {
+        "0.1.0": "consumeHack"
+      }
+    }
+  },
   "readme": "# AutoComplete-Hack\n\nHackLang AutoCompletion for Atom Editor. This Plugin was originally a part of [Atom-Hack][Atom-Hack]. and Uses the same configuration file. (Check out that repo for more info about Configuration)\n\nAutoComplete-Hack supports autocomplete over the ssh (Atom-Hack did not).\n\n#### Installation\n```sh\napm install autocomplete-hack\n```\n\n#### Screenshot\n![Screenshot](https://cloud.githubusercontent.com/assets/4278113/7766989/a91bb544-0023-11e5-8258-e85b96c07f04.png)\n\n#### License\nThis Project is licensed under the terms of MIT License. See the LICENSE file for more info.\n\n[Atom-Hack]:https://github.com/steelbrain/Atom-Hack\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/steelbrain/autocomplete-hack/issues"
   },
   "homepage": "https://github.com/steelbrain/autocomplete-hack",
-  "_id": "autocomplete-hack@0.2.1",
-  "_shasum": "830a141c8a2dff91d329d3d44662b63199c01821",
-  "_resolved": "file:../d-115426-24892-iqzu6k/package.tgz",
-  "_from": "../d-115426-24892-iqzu6k/package.tgz",
+  "_id": "autocomplete-hack@1.0.0",
+  "_shasum": "27275500547faae76945381434e1e6504bb3efd3",
+  "_resolved": "file:../d-115510-17801-sv0t8n/package.tgz",
+  "_from": "../d-115510-17801-sv0t8n/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
         "name": "node-ssh",
-        "version": "0.2.3",
+        "version": "0.2.5",
         "path": "node_modules/node-ssh/Dist/SSH.js"
       },
       {
         "name": "a-promise",
-        "version": "0.1.2",
+        "version": "1.0.0",
         "path": "node_modules/node-ssh/node_modules/a-promise/Main.js"
       },
       {
@@ -80,7 +87,7 @@
       },
       {
         "name": "ssh2-streams",
-        "version": "0.0.13",
+        "version": "0.0.14",
         "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/index.js"
       },
       {
@@ -107,7 +114,6 @@
     "extensions": {
       ".coffee": [
         "lib/autocomplete-hack.coffee",
-        "lib/hack.coffee",
         "node_modules/node-ssh/Source/SSH.coffee",
         "node_modules/string_score/coffee/string_score.coffee"
       ],

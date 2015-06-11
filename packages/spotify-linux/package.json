@@ -1,7 +1,7 @@
 {
   "name": "spotify-linux",
   "main": "./lib/spotify-linux",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Spotify integration for Linux",
   "repository": {
     "type": "git",
@@ -29,10 +29,10 @@
     "url": "https://github.com/jazzpi/spotify-linux/issues"
   },
   "homepage": "https://github.com/jazzpi/spotify-linux",
-  "_id": "spotify-linux@0.3.0",
-  "_shasum": "bed6678ad05f1937f30b2b059d5acf512cd8e5c8",
-  "_resolved": "file:../d-11553-16252-1gu2kmg/package.tgz",
-  "_from": "../d-11553-16252-1gu2kmg/package.tgz",
+  "_id": "spotify-linux@0.3.1",
+  "_shasum": "de92d5636ef74acd34515e84cbc5d1c7f5ddd2e3",
+  "_resolved": "file:../d-115511-1755-1x7h54i/package.tgz",
+  "_from": "../d-115511-1755-1x7h54i/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -173,7 +173,7 @@
       },
       {
         "name": "amdefine",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "path": "node_modules/event-kit/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js"
       },
       {

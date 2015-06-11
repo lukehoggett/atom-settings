@@ -1,7 +1,7 @@
 {
   "name": "flex-tool-bar",
   "main": "./lib/flex-tool-bar",
-  "version": "0.3.0",
+  "version": "0.4.2",
   "description": "Easily Customizable ToolBar for Atom",
   "repository": {
     "type": "git",
@@ -17,6 +17,9 @@
   },
   "dependencies": {
     "atom-package-dependencies": "latest",
+    "cson": "^3.0.1",
+    "fs-plus": "^2.8.1",
+    "json5": "^0.4.0",
     "node-watch": "^0.3.4",
     "space-pen": "^5.1.1"
   },
@@ -30,16 +33,16 @@
       }
     }
   },
-  "readme": "# Flex Tool Bar\n\n### Easily Customizable Toolbar for Atom\n\nThis is a plugin for the [Atom Tool Bar](https://atom.io/packages/tool-bar) package.\n\nYou can configure your toolbar buttons with a JSON file to perform specific actions in Atom or to open web sites in your default browser.\n\n![screenshot](https://raw.githubusercontent.com/cakecatz/flex-toolbar/docs/screenshot.png)\n\nTo edit your config file, type `Flex Toolbar: Edit my config file` in the Atom command palette.\n\n### Configuration\n\n**Flex Tool Bar** has three \"types\" you can configure:\n`button`, `url` and `spacer`.\n\n- `button` creates default buttons for your toolbar.\n\n    You can use it to set actions like `application:new-file`.\n\n- `url` creates buttons pointing to specific web pages.\n\n    Use this to open any web site, such as your GitHub notifications, in your default browser. See this feature in action in this [screencast](http://quick.as/b5vafe4g).\n\n- `spacer` adds separators between toolbar buttons.\n\n### Features\n\n- multiple callback\n- button style\n- hide, disable button when specific grammar\n\n### Button style\n\nCan use CSS Property.\n\n    \"style\": {\n      \"color\": \"red\",\n      \"background\": \"green\",\n      \"border\": \"1px solid blue\"\n    }\n\n### Multiple callback\n\n    \"callback\": [\"callback1\", \"callback2\"]\n\n### Hide, Disable button\n\nYou can hide or disable button when specific grammar.\nIf you set like this,\n\n    \"disable\": \"coffee\"\n\nWill disable button when opened CoffeeScript file.\n\nOf course, can set Array to value.\n\n    \"disable\": [\n      \"json\",\n      \"less\"\n    ]\n\nYou can use `!` :laughing:\n\n    \"hide\": \"!Markdown\"\n\nThis will hide button when opened any file except Markdown.\n\n\n### Sample Code\n\n    [\n      {\n        \"type\": \"url\",\n        \"icon\": \"octoface\",\n        \"url\": \"http://github.com\",\n        \"tooltip\": \"Github Page\",\n        \"iconset\": \"\"\n      },\n      {\n        \"type\": \"spacer\"\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"document\",\n        \"callback\": \"application:new-file\",\n        \"tooltip\": \"New File\",\n        \"iconset\": \"ion\",\n        \"mode\": \"dev\"\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"columns\",\n        \"iconset\": \"fa\",\n        \"callback\": [\"pane:split-right\", \"pane:split-right\"]\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"circuit-board\",\n        \"callback\": \"git-diff:toggle-diff-list\",\n        \"style\": {\n          \"color\": \"#FA4F28\"\n        }\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"markdown\",\n        \"callback\": \"markdown-preview:toggle\",\n        \"disable\": \"!markdown\"\n      }\n    ]\n",
+  "readme": "# Flex Tool Bar\n\n### Easily Customizable Toolbar for Atom\n\nThis is a plugin for the [Atom Tool Bar](https://atom.io/packages/tool-bar) package.\n\nYou can configure your toolbar buttons with a `JSON`, `CSON`, `JSON5` file to perform specific actions in Atom or to open web sites in your default browser.\n\n![screenshot](https://raw.githubusercontent.com/cakecatz/flex-toolbar/docs/screenshot.png)\n\nTo edit your config file, type `Flex Toolbar: Edit my config file` in the Atom command palette.\n\n### Configuration\n\n**Flex Tool Bar** has three \"types\" you can configure:\n`button`, `url` and `spacer`.\n\n- `button` creates default buttons for your toolbar.\n\n    You can use it to set actions like `application:new-file`.\n\n- `url` creates buttons pointing to specific web pages.\n\n    Use this to open any web site, such as your GitHub notifications, in your default browser. See this feature in action in this [screencast](http://quick.as/b5vafe4g).\n\n- `spacer` adds separators between toolbar buttons.\n\n### Features\n\n- multiple callback\n- button style\n- hide, disable button when specific grammar\n\n### Button style\n\nCan use CSS Property.\n\n    \"style\": {\n      \"color\": \"red\",\n      \"background\": \"green\",\n      \"border\": \"1px solid blue\"\n    }\n\n### Multiple callback\n\n    \"callback\": [\"callback1\", \"callback2\"]\n\n### Hide(Show), Disable(Enable) button\n\nYou can hide or disable button when specific grammar.\nIf you set like this,\n\n    \"disable\": \"coffee\"\n\nWill disable button when opened CoffeeScript file.\n\nOf course, can set Array to value.\n\n    \"disable\": [\n      \"json\",\n      \"less\"\n    ]\n\nYou can use `!` :laughing:\n\n    \"hide\": \"!Markdown\"\n\nThis will hide button when opened any file except Markdown.\n\n    \"show\": \"Markdown\"\n    \nThis is same above.\n\n\n### Sample Code\n\n    [\n      {\n        \"type\": \"url\",\n        \"icon\": \"octoface\",\n        \"url\": \"http://github.com\",\n        \"tooltip\": \"Github Page\",\n        \"iconset\": \"\"\n      },\n      {\n        \"type\": \"spacer\"\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"document\",\n        \"callback\": \"application:new-file\",\n        \"tooltip\": \"New File\",\n        \"iconset\": \"ion\",\n        \"mode\": \"dev\"\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"columns\",\n        \"iconset\": \"fa\",\n        \"callback\": [\"pane:split-right\", \"pane:split-right\"]\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"circuit-board\",\n        \"callback\": \"git-diff:toggle-diff-list\",\n        \"style\": {\n          \"color\": \"#FA4F28\"\n        }\n      },\n      {\n        \"type\": \"button\",\n        \"icon\": \"markdown\",\n        \"callback\": \"markdown-preview:toggle\",\n        \"disable\": \"!markdown\"\n      }\n    ]\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/cakecatz/flex-toolbar/issues"
   },
   "homepage": "https://github.com/cakecatz/flex-toolbar",
-  "_id": "flex-tool-bar@0.3.0",
-  "_shasum": "3e584e90fc936a1bd162bfbcc0f270b59cad8f43",
-  "_resolved": "file:../d-115425-10866-1jam6ar/package.tgz",
-  "_from": "../d-115425-10866-1jam6ar/package.tgz",
+  "_id": "flex-tool-bar@0.4.2",
+  "_shasum": "0bf0b1b378069ebbc415d2069c1a07a120249ea0",
+  "_resolved": "file:../d-11559-8812-xdpwwd/package.tgz",
+  "_from": "../d-11559-8812-xdpwwd/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -124,6 +127,86 @@
         "path": "node_modules/atom-package-dependencies/node_modules/witwip/node_modules/read-package-json/node_modules/slide/lib/slide.js"
       },
       {
+        "name": "cson",
+        "version": "3.0.1",
+        "path": "node_modules/cson/out/lib/cson.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.9.3",
+        "path": "node_modules/cson/node_modules/coffee-script/lib/coffee-script/coffee-script.js"
+      },
+      {
+        "name": "cson-parser",
+        "version": "1.1.0",
+        "path": "node_modules/cson/node_modules/cson-parser/lib/cson-parser.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.9.0",
+        "path": "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/coffee-script.js"
+      },
+      {
+        "name": "extract-opts",
+        "version": "3.0.1",
+        "path": "node_modules/cson/node_modules/extract-opts/out/lib/extract-opts.js"
+      },
+      {
+        "name": "typechecker",
+        "version": "2.0.8",
+        "path": "node_modules/cson/node_modules/extract-opts/node_modules/typechecker/out/lib/typechecker.js"
+      },
+      {
+        "name": "requirefresh",
+        "version": "2.0.0",
+        "path": "node_modules/cson/node_modules/requirefresh/out/lib/requirefresh.js"
+      },
+      {
+        "name": "safefs",
+        "version": "3.1.3",
+        "path": "node_modules/cson/node_modules/safefs/out/lib/safefs.js"
+      },
+      {
+        "name": "graceful-fs",
+        "version": "3.0.8",
+        "path": "node_modules/cson/node_modules/safefs/node_modules/graceful-fs/graceful-fs.js"
+      },
+      {
+        "name": "fs-plus",
+        "version": "2.8.1",
+        "path": "node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "json5",
+        "version": "0.4.0",
+        "path": "node_modules/json5/lib/json5.js"
+      },
+      {
         "name": "node-watch",
         "version": "0.3.4",
         "path": "node_modules/node-watch/lib/watch.js"
@@ -154,33 +237,13 @@
         "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js"
       },
       {
-        "name": "fs-plus",
-        "version": "2.8.1",
-        "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/lib/fs-plus.js"
-      },
-      {
-        "name": "async",
-        "version": "0.2.10",
-        "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/async/lib/async.js"
-      },
-      {
-        "name": "mkdirp",
-        "version": "0.3.5",
-        "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/index.js"
-      },
-      {
-        "name": "rimraf",
-        "version": "2.2.8",
-        "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/rimraf.js"
-      },
-      {
         "name": "source-map",
         "version": "0.1.43",
         "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map.js"
       },
       {
         "name": "amdefine",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "path": "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js"
       },
       {
@@ -308,6 +371,71 @@
         "node_modules/atom-package-dependencies/node_modules/witwip/node_modules/read-package-json/node_modules/slide/lib/slide.js",
         "node_modules/atom-package-dependencies/node_modules/witwip/node_modules/read-package-json/read-json.js",
         "node_modules/atom-package-dependencies/node_modules/witwip/witwip.js",
+        "node_modules/cson/docs/assets/biscotto.js",
+        "node_modules/cson/docs/assets/search_data.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/browser.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/cake.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/coffee-script.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/command.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/grammar.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/helpers.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/index.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/lexer.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/nodes.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/optparse.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/parser.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/register.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/repl.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/rewriter.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/scope.js",
+        "node_modules/cson/node_modules/coffee-script/lib/coffee-script/sourcemap.js",
+        "node_modules/cson/node_modules/coffee-script/register.js",
+        "node_modules/cson/node_modules/coffee-script/repl.js",
+        "node_modules/cson/node_modules/cson-parser/lib/cson-parser.js",
+        "node_modules/cson/node_modules/cson-parser/lib/parse.js",
+        "node_modules/cson/node_modules/cson-parser/lib/stringify.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/browser.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/cake.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/coffee-script.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/command.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/grammar.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/helpers.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/index.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/lexer.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/nodes.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/optparse.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/parser.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/register.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/repl.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/rewriter.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/scope.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/lib/coffee-script/sourcemap.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/register.js",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/repl.js",
+        "node_modules/cson/node_modules/extract-opts/example.js",
+        "node_modules/cson/node_modules/extract-opts/node_modules/typechecker/cyclic.js",
+        "node_modules/cson/node_modules/extract-opts/node_modules/typechecker/out/lib/typechecker.js",
+        "node_modules/cson/node_modules/extract-opts/out/lib/extract-opts.js",
+        "node_modules/cson/node_modules/requirefresh/out/lib/requirefresh.js",
+        "node_modules/cson/node_modules/safefs/cyclic.js",
+        "node_modules/cson/node_modules/safefs/node_modules/graceful-fs/fs.js",
+        "node_modules/cson/node_modules/safefs/node_modules/graceful-fs/graceful-fs.js",
+        "node_modules/cson/node_modules/safefs/node_modules/graceful-fs/polyfills.js",
+        "node_modules/cson/node_modules/safefs/out/lib/safefs.js",
+        "node_modules/cson/out/bin/cson-cli.js",
+        "node_modules/cson/out/lib/cson.js",
+        "node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/json5/lib/cli.js",
+        "node_modules/json5/lib/json5.js",
+        "node_modules/json5/lib/require.js",
         "node_modules/node-watch/index.js",
         "node_modules/node-watch/lib/watch.js",
         "node_modules/space-pen/lib/space-pen.js",
@@ -334,12 +462,6 @@
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/register.js",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/repl.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/lib/fs-plus.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/async/lib/async.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/index.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/bin.js",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/rimraf.js",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/Makefile.dryice.js",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/assert-shim.js",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/mini-require.js",
@@ -873,15 +995,29 @@
         "node_modules/atom-package-dependencies/node_modules/witwip/node_modules/read-package-json/package.json",
         "node_modules/atom-package-dependencies/node_modules/witwip/package.json",
         "node_modules/atom-package-dependencies/package.json",
+        "node_modules/cson/node_modules/coffee-script/bower.json",
+        "node_modules/cson/node_modules/coffee-script/package.json",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/bower.json",
+        "node_modules/cson/node_modules/cson-parser/node_modules/coffee-script/package.json",
+        "node_modules/cson/node_modules/cson-parser/package.json",
+        "node_modules/cson/node_modules/extract-opts/node_modules/typechecker/package.json",
+        "node_modules/cson/node_modules/extract-opts/package.json",
+        "node_modules/cson/node_modules/requirefresh/package.json",
+        "node_modules/cson/node_modules/safefs/node_modules/graceful-fs/package.json",
+        "node_modules/cson/node_modules/safefs/package.json",
+        "node_modules/cson/package.json",
+        "node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/package.json",
+        "node_modules/fs-plus/package.json",
+        "node_modules/json5/package.json",
         "node_modules/node-watch/package.json",
         "node_modules/space-pen/api.json",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/package.json",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/package.json",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/async/component.json",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/async/package.json",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/mkdirp/package.json",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/node_modules/rimraf/package.json",
-        "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/package.json",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/package.json",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/package.json",
         "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/package.json",
@@ -910,6 +1046,9 @@
           "spec"
         ],
         "dependencies": {
+          "cson": "^3.0.1",
+          "fs-plus": "^2.8.1",
+          "json5": "^0.4.0",
           "node-watch": "^0.3.4",
           "space-pen": "^5.1.1"
         }
@@ -984,6 +1123,69 @@
       },
       {
         "paths": [
+          "node_modules/cson/docs/assets",
+          "node_modules/cson/out/bin",
+          "node_modules/cson/out/lib",
+          "node_modules/cson"
+        ],
+        "dependencies": {
+          "coffee-script": "~1.9.0",
+          "cson-parser": "^1.0.6",
+          "extract-opts": "^3.0.1",
+          "requirefresh": "^2.0.0",
+          "safefs": "^3.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/cson/node_modules/cson-parser/lib",
+          "node_modules/cson/node_modules/cson-parser"
+        ],
+        "dependencies": {
+          "coffee-script": "1.9.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/cson/node_modules/extract-opts",
+          "node_modules/cson/node_modules/extract-opts/out/lib"
+        ],
+        "dependencies": {
+          "typechecker": "^2.0.8"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/cson/node_modules/safefs",
+          "node_modules/cson/node_modules/safefs/out/lib"
+        ],
+        "dependencies": {
+          "graceful-fs": "^3.0.6"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/lib",
+          "node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/node_modules/underscore-plus/lib",
+          "node_modules/fs-plus/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      },
+      {
+        "paths": [
           "node_modules/space-pen",
           "node_modules/space-pen/lib"
         ],
@@ -1020,18 +1222,6 @@
         ],
         "dependencies": {
           "mkdirp": "~0.3.5"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus/lib",
-          "node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/fs-plus"
-        ],
-        "dependencies": {
-          "underscore-plus": "1.x",
-          "mkdirp": "~0.3.5",
-          "rimraf": "~2.2.2",
-          "async": "~0.2.9"
         }
       },
       {

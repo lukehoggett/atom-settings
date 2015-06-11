@@ -3,30 +3,31 @@ path = require 'path'
 
 module.exports =
   toolBar: null
-
+  configFilePath: null
   currentGrammar: null
 
   config:
-    toolBarConfigurationJsonPath:
+    toolBarConfigurationFilePath:
       type: 'string'
-      default: path.join process.env.ATOM_HOME, 'toolbar.json'
+      default: path.join process.env.ATOM_HOME, '/'
     showConfigButton:
       type: 'boolean'
       default: true
-    reloadToolBarWhenEditJson:
+    reloadToolBarWhenEditConfigFile:
       type: 'boolean'
       default: true
 
   activate: ->
 
     @storeGrammar()
+    @resolveConfigPath()
 
     @subscriptions = atom.commands.add 'atom-workspace',
-      'flex-tool-bar:edit-config-file': ->
-        atom.workspace.open atom.config.get('flex-tool-bar.toolBarConfigurationJsonPath')
-    if atom.config.get('flex-tool-bar.reloadToolBarWhenEditJson')
+      'flex-tool-bar:edit-config-file': =>
+        atom.workspace.open @configFilePath
+    if atom.config.get('flex-tool-bar.reloadToolBarWhenEditConfigFile')
       watch = require 'node-watch'
-      watch atom.config.get('flex-tool-bar.toolBarConfigurationJsonPath'), =>
+      watch @configFilePath, =>
         @reloadToolbar()
 
     atom.workspace.onDidChangeActivePaneItem (item) =>
@@ -39,8 +40,7 @@ module.exports =
 
   reloadToolbar: (init) ->
     try
-      toolBarButtons = require atom.config.get('flex-tool-bar.toolBarConfigurationJsonPath')
-      delete require.cache[atom.config.get('flex-tool-bar.toolBarConfigurationJsonPath')]
+      toolBarButtons = @loadConfig()
       # Remove and add buttons after successful JSON parse
       @removeButtons()
       @addButtons toolBarButtons
@@ -60,7 +60,7 @@ module.exports =
       devMode = atom.inDevMode()
       for btn in toolBarButtons
 
-        if btn.hide? && @grammarCondition(btn.hide)
+        if ( btn.hide? && @grammarCondition(btn.hide) ) or ( btn.show? && !@grammarCondition(btn.show) )
           continue
 
         continue if btn.mode and btn.mode is 'dev' and not devMode
@@ -84,7 +84,7 @@ module.exports =
           for k, v of btn.style
             button.css(k, v)
 
-        if btn.disable? && @grammarCondition(btn.disable)
+        if ( btn.disable? && @grammarCondition(btn.disable) ) or ( btn.enable? && !@grammarCondition(btn.enable) )
           button.setEnabled false
 
   toolBar_addButton: (btn) ->
@@ -106,6 +106,34 @@ module.exports =
         iconset: btn.iconset
         priority: btn.priority
 
+  resolveConfigPath: ->
+    fs = require 'fs-plus'
+    @configFilePath = atom.config.get('flex-tool-bar.toolBarConfigurationFilePath')
+    
+    ext = path.extname @configFilePath
+
+    if ext is ''
+      @configFilePath = fs.resolve @configFilePath, 'toolbar', ['cson', 'json5', 'json']
+
+  loadConfig: ->
+    ext = path.extname @configFilePath
+
+    switch ext
+      when '.json'
+        config = require @configFilePath
+        delete require.cache[@configFilePath]
+
+      when '.json5'
+        require 'json5/lib/require'
+        config = require @configFilePath
+        delete require.cache[@configFilePath]
+
+      when '.cson'
+        CSON = require 'cson'
+        config = CSON.requireCSONFile @configFilePath
+
+    return config
+
   grammarCondition: (grammars) ->
     result = false
     grammars = [grammars] if typeof grammars is 'string'
@@ -116,7 +144,7 @@ module.exports =
         grammar = grammar.replace '!', ''
         reverse = true
 
-      if @currentGrammar.includes grammar.toLowerCase()
+      if @currentGrammar? && @currentGrammar.includes grammar.toLowerCase()
         result = true
 
       result = !result if reverse

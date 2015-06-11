@@ -36,6 +36,8 @@
     plugins:
       "git-diff": true
       "highlight-selected": true
+    absoluteMode: true
+    displayMinimapOnLeft: true
   "remember-session":
     x: 2638
     y: 52
@@ -65,3 +67,10 @@
     {}
   "gist-it":
     userToken: "d570a034523545662940ef89df469975f6e1a4f4"
+  tabs:
+    usePreviewTabs: true
+    alwaysShowTabBar: false
+  "find-and-replace":
+    openProjectFindResultsInRightPane: true
+  "tree-view":
+    showOnRightSide: true
