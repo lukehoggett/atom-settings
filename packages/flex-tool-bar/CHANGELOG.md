@@ -1,3 +1,9 @@
+## 0.4.4
+- Fixed resolveConfigPath not searching for toolbar.json (by Andrew Douglas)
+
+## 0.4.3
+- Change default config file type
+
 ## 0.4.2
 - Fixed bugs
 

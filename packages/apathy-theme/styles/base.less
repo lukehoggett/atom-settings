@@ -11,13 +11,12 @@ atom-text-editor, :host {
   // font-family: 'Inconsolata';
   font-weight: normal;
   // text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: subpixel-antialiased !important;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-text-stroke-width: 0.03em;
   text-shadow: none;
   // letter-spacing: -0.01em !important;
 }
 atom-pane:not(.active) atom-text-editor {
-  background-color: @syntax-inactive-bg-color;
-  opacity: .4;
   color: hsla(0, 100%, 100%, 0.6);
 }
 atom-pane:not(.active) atom-text-editor .underlayer {
@@ -27,7 +26,20 @@ atom-pane-container atom-pane {
   background-color: hsl(204, 7%, 14%);
 }
 atom-pane-container atom-pane:not(.active) {
-  opacity: 0.8;
+  // opacity: 0.8;
+  // -webkit-filter: brightness(75%) saturate(75%);
+  & /deep/ .source {
+    -webkit-filter: brightness(60%) opacity(0.8);
+  }
+  & /deep/ .gutter {
+    opacity: 0.7;
+    .line-number {
+      opacity: 0.5 !important;
+    }
+  }
+  & /deep/ .line {
+    background-color: transparent;
+  }
 }
 atom-pane-container atom-pane:before {
   background-color: @syntax-inactive-overlay-color;
@@ -41,8 +53,11 @@ atom-pane-container atom-pane:before {
 atom-text-editor .gutter, :host .gutter {
   background-color: @syntax-gutter-background-color;
   color: @syntax-gutter-text-color;
-  box-shadow: inset -1px 0px hsla(0, 100%, 100%, 0.2),
-						  1px 0px hsl(0,0%,0%,0.9);
+  // Soften edge between gutter and text editor.
+  & > .line-numbers:first-child {
+    background-color: hsl(265, 38%, 9%);
+    box-shadow: inset 1px 0px hsl(257, 24%, 12%), inset -1px 0px hsl(0, 0%, 0%);
+  }
 }
 atom-text-editor::shadow atom-text-editor-minimap, atom-text-editor atom-text-editor-minimap {
   background: @minimap-bg-color;
@@ -66,20 +81,29 @@ atom-text-editor .gutter .line-number.cursor-line-no-selection, :host .gutter .l
   color: @syntax-gutter-text-color-selected;
 }
 
-atom-text-editor .wrap-guide, :host .wrap-guide {
+atom-text-editor .wrap-guide,
+:host .wrap-guide {
   color: @syntax-wrap-guide-color;
-  background-color: hsl(0, 0%, 0%);
-border-right: 1px solid hsl(259, 25%, 15%);
-border-left: 2px solid hsl(0, 0%, 0%);
+  background-color: hsl(264,5%,3%);
+  border-right: none;
+  border-left: 1px solid hsl(264, 24%, 22%);
+  box-shadow: none;
+  z-index: 0;
 }
 
 
-atom-text-editor .invisible-character, :host .invisible-character {
+atom-text-editor .invisible-character,
+:host .invisible-character {
   color: fadeout(@syntax-indent-guide-color,15%);
 }
 
 atom-text-editor .indent-guide, :host .indent-guide {
   color:  @syntax-indent-guide-color;
+  background: none;
+  box-shadow: inset 1px 0 hsl(262, 22%, 18%);
+  &:first-child {
+    box-shadow: none;
+  }
 }
 
 
@@ -87,12 +111,19 @@ atom-text-editor.is-focused .cursor, :host(.is-focused) .cursor {
   border-color: @syntax-cursor-color;
 }
 
-atom-text-editor.is-focused .selection .region, :host(.is-focused) .selection .region {
-  background-color: @syntax-selection-color;
+
+:host(.is-focused) .selection .region {
+  background-color: hsla(273, 20%, 35%, 0.3);
+
+  &:first-child:last-child {
+    background-color: hsla(288, 20%, 40%, 0.8) !important
+  }
 }
 
 atom-text-editor.is-focused .line-number.cursor-line-no-selection, atom-text-editor.is-focused .line.cursor-line, :host(.is-focused) .line-number.cursor-line-no-selection, :host(.is-focused) .line.cursor-line {
-  background-color: #2C2830;
+  background-color: hsla(265, 29%, 59%, 0.2);
+  border: none;
+  z-index: 101;
 	& .entity.name.function {
 		-webkit-transition: all 1s;
 		-webkit-animation: neon6 1s ease-in-out infinite alternate;
@@ -142,10 +173,13 @@ atom-text-editor::shadow .find-result .region {
 //
 .source {
 	color: @foreground-color;
+  -webkit-text-stroke-width: 0.05em;
+  -webkit-filter: saturate(@syntax-saturate) brightness(@syntax-brightness) contrast(@syntax-contrast);
 }
 .comment {
   color: @comment-color;
-	font-weight: 700;
+	font-weight: normal;
+  -webkit-text-stroke-width: 0.04em;
 	.block.documentation {
 		color: lighten(@comment-color, 3%);
 	}
@@ -197,7 +231,7 @@ atom-text-editor::shadow .find-result .region {
 .keyword {
 	color: @red;
 	font-weight: bold;
-	-webkit-text-stroke: .02em;
+	-webkit-text-stroke: 0.02em;
 	&.operator {
 		color: @orange;
 	}
@@ -372,6 +406,7 @@ atom-text-editor::shadow .find-result .region {
 @import "languages/css.less";
 @import "languages/markdown.less";
 @import "languages/jade.less";
+@import "languages/js-semantic.less";
 @import "languages/coffeescript.less";
 @import "languages/jasmine.less";
 @import "languages/xml.less";
@@ -380,7 +415,6 @@ atom-text-editor::shadow .find-result .region {
 // @import "languages/c.less";
 // @import "languages/git.less";
 // @import "languages/handlebars.less";
-// @import "languages/js-semantic.less";
 // @import "languages/php.less";
 // @import "languages/python.less";
 // @import "languages/ruby.less";
@@ -450,21 +484,9 @@ atom-text-editor::shadow .find-result .region {
 // ----------------------------------------------------------------------------
 // Apathy Semantic
 //
-// @hues: 20, 45, 73, 135, 180, 220, 300, 340;
-@hues: 0, 120, 240, 0, 120, 240, 60, 180;
-
-.generate-semantic(@n; @i: 1) when (@i =< @n) {
-  &[data-apathy-index~="@{i}"] {
-    color: hsl(extract(@hues, @i), 85%, 85%);
-    font-weight: normal;
-  }
-  .generate-semantic(@n, (@i + 1));
-}
-
-:host .source .apathy-span,
+:host .source:not(.js-semantic) .apathy-span,
 :host .source .keyword + span:not(.string):not(.brace):not(.terminator):not(.operator) {
   font-weight: normal;
-  // .generate-semantic(8);
   &[data-apathy-index~="1"] {
     text-shadow: 0px 0px 2px hsl(289, 51%, 42%),
                  0px 0px 2px hsl(289, 51%, 42%),
@@ -506,5 +528,12 @@ atom-text-editor::shadow .find-result .region {
                  0px 0px 20px hsl(53, 51%, 42%),
                  0px 0px 50px hsl(53, 51%, 42%);
     font-weight: normal;
+  }
+  &[data-apathy-selected="true"] {
+    -webkit-transition: all 1s;
+    -webkit-animation: neon6 1s ease-in-out infinite alternate;
+  }
+  &.apathy-no-glow {
+    text-shadow: none !important;
   }
 }

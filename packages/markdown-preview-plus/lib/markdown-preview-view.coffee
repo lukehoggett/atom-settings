@@ -119,12 +119,12 @@ class MarkdownPreviewView extends ScrollView
     if @file?
       @disposables.add @file.onDidChange(changeHandler)
     else if @editor?
-      @disposables.add @editor.getBuffer().onDidStopChanging =>
+      @disposables.add @editor.getBuffer().onDidStopChanging ->
         changeHandler() if atom.config.get 'markdown-preview-plus.liveUpdate'
       @disposables.add @editor.onDidChangePath => @emitter.emit 'did-change-title'
-      @disposables.add @editor.getBuffer().onDidSave =>
+      @disposables.add @editor.getBuffer().onDidSave ->
         changeHandler() unless atom.config.get 'markdown-preview-plus.liveUpdate'
-      @disposables.add @editor.getBuffer().onDidReload =>
+      @disposables.add @editor.getBuffer().onDidReload ->
         changeHandler() unless atom.config.get 'markdown-preview-plus.liveUpdate'
 
     @disposables.add atom.config.onDidChange 'markdown-preview-plus.breakOnSingleNewline', changeHandler
@@ -136,6 +136,12 @@ class MarkdownPreviewView extends ScrollView
           @renderLaTeX = !@renderLaTeX
           changeHandler()
         return
+
+    @disposables.add atom.config.observe 'markdown-preview-plus.useGitHubStyle', (useGitHubStyle) =>
+      if useGitHubStyle
+        @element.setAttribute('data-use-github-style', '')
+      else
+        @element.removeAttribute('data-use-github-style')
 
   renderMarkdown: ->
     @showLoading() unless @loaded
@@ -153,7 +159,7 @@ class MarkdownPreviewView extends ScrollView
     @getMarkdownSource().then (source) =>
       return unless source?
 
-      renderer.toHTML source, @getPath(), @getGrammar(), callback
+      renderer.toHTML source, @getPath(), @getGrammar(), @renderLaTeX, callback
 
   renderMarkdownText: (text) ->
     renderer.toHTML text, @getPath(), @getGrammar(), @renderLaTeX, (error, html) =>
@@ -239,7 +245,7 @@ class MarkdownPreviewView extends ScrollView
   getMarkdownPreviewCSS: ->
     markdowPreviewRules = []
     ruleRegExp = /\.markdown-preview/
-    cssUrlRefExp = /url\(atom:\/\/markdown-preview\/assets\/(.*)\)/
+    cssUrlRefExp = /url\(atom:\/\/markdown-preview-plus\/assets\/(.*)\)/
 
     for stylesheet in @getDocumentStyleSheets()
       if stylesheet.rules?
@@ -307,13 +313,30 @@ class MarkdownPreviewView extends ScrollView
         if error?
           console.warn('Saving Markdown as HTML failed', error)
         else
+          if @renderLaTeX
+            mathjaxScript = """
 
+              <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                  jax: ["input/TeX","output/HTML-CSS"],
+                  extensions: [],
+                  TeX: {
+                    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+                  },
+                  showMathMenu: false
+                });
+              </script>
+              <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+              </script>
+              """
+          else
+            mathjaxScript = ""
           html = """
             <!DOCTYPE html>
             <html>
               <head>
                   <meta charset="utf-8" />
-                  <title>#{title}</title>
+                  <title>#{title}</title>#{mathjaxScript}
                   <style>#{@getMarkdownPreviewCSS()}</style>
               </head>
               <body class='markdown-preview'>#{htmlBody}</body>

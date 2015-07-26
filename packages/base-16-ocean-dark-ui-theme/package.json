@@ -1,7 +1,7 @@
 {
   "name": "base-16-ocean-dark-ui-theme",
   "theme": "ui",
-  "version": "1.2.1",
+  "version": "1.4.2",
   "description": "A dark UI theme based on base16 ocean dark",
   "repository": {
     "type": "git",
@@ -11,16 +11,16 @@
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   },
-  "readme": "# Base 16 Ocean Dark UI Theme\n\nThis is a UI theme for Atom based on the [Base 16](http://chriskempson.github.io/base16/) - Ocean Dark theme.\n\n![Preview](https://raw.githubusercontent.com/rm-code/base16-ocean-dark-ui/master/screenshots/screenshot_01.png)\n\nRecommended syntax theme: [Base 16 - Syntax theme](https://atom.io/themes/base16-ocean-dark-syntax-theme) by [anson0370](https://github.com/anson0370).\n",
+  "readme": "# Base 16 Ocean Dark UI Theme\n\nThis is a UI theme for Atom based on the [Base 16](http://chriskempson.github.io/base16/) - Ocean Dark theme.\n\n![Preview](https://raw.githubusercontent.com/rm-code/base16-ocean-dark-ui/master/screenshots/screenshot.png)\n\nRecommended syntax theme:\n\n- [Base 16 - Syntax theme](https://atom.io/themes/base16-ocean-dark-syntax-theme) by [anson0370](https://github.com/anson0370)\n\nRecommended plugins:\n\n- [File-Icons](https://atom.io/packages/file-icons)\n- [Minimap](https://atom.io/packages/minimap)\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/rm-code/base16-ocean-dark-ui/issues"
   },
   "homepage": "https://github.com/rm-code/base16-ocean-dark-ui",
-  "_id": "base-16-ocean-dark-ui-theme@1.2.1",
-  "_shasum": "56184ff9947768b2c3f27c32d078d0442041c13c",
-  "_resolved": "file:../d-11553-16525-13puhum/package.tgz",
-  "_from": "../d-11553-16525-13puhum/package.tgz",
+  "_id": "base-16-ocean-dark-ui-theme@1.4.2",
+  "_shasum": "027dee8e4dacb4741af42acf71b02f60e5100d1a",
+  "_resolved": "file:../d-115626-2052-163x7vh/package.tgz",
+  "_from": "../d-115626-2052-163x7vh/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

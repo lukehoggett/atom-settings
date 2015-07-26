@@ -91,16 +91,17 @@ class Manager
         @clients[clientIdx].port = port
       else
         client.port = port
-      @init() if @servers.length is @clients.length and !@initialised
-      @setActiveServerAndClient(dir)
+      if @servers.length is @clients.length
+        @init() if !@initialised
+        @setActiveServerAndClient(dir)
 
   setActiveServerAndClient: (URI) ->
     if !URI
       activePane = atom.workspace.getActivePaneItem()
       URI = if activePane then activePane.getURI?() else false
     if !URI
-      @server = false
-      @client = false
+      @server = null
+      @client = null
       return
     dir = atom.project.relativizePath(URI)[0]
     server = @getServerForProject(dir)
@@ -110,8 +111,9 @@ class Manager
       @config.gatherData()
       @client = client
     else
-      @server = false
-      @client = false
+      @server = null
+      @config.clear()
+      @client = null
 
   checkPaths: (paths) ->
     for path in paths
@@ -127,7 +129,7 @@ class Manager
     return if serverIdx is undefined
     server = @servers[serverIdx]
     client = @getClientForProject(server.rootPath)
-    client.unregisterEvents()
+    client?.unregisterEvents()
     client = null
     server.stop()
     server = null
@@ -172,6 +174,7 @@ class Manager
       @disposables.push editor.getBuffer().onDidSave (event) =>
         @client?.update(editor.getURI(), editor.getText())
     @disposables.push atom.workspace.onDidChangeActivePaneItem (item) =>
+      @config?.clear()
       @type?.destroyOverlay()
       @rename?.hide()
       if !@isValidEditor(item)
@@ -181,8 +184,6 @@ class Manager
     @disposables.push atom.config.observe 'atom-ternjs.inlineFnCompletion', =>
       @inlineFnCompletion = atom.config.get('atom-ternjs.inlineFnCompletion')
       @type?.destroyOverlay()
-    @disposables.push atom.config.observe 'atom-ternjs.coffeeScript', =>
-      @checkGrammarSettings()
     @disposables.push atom.config.observe 'atom-ternjs.lint', =>
       @useLint = atom.config.get('atom-ternjs.lint')
     @disposables.push atom.config.observe 'atom-ternjs.useSnippets', (value) =>
@@ -199,14 +200,6 @@ class Manager
       atom.config.set('atom-ternjs.useSnippets', false)
       atom.config.set('atom-ternjs.useSnippetsAndFunction', false)
 
-  checkGrammarSettings: ->
-    if atom.config.get('atom-ternjs.coffeeScript')
-      @addGrammar('CoffeeScript')
-      @provider.addSelector('.source.coffee')
-    else
-      @removeGrammar('CoffeeScript')
-      @provider.removeSelector('.source.coffee')
-
   addGrammar: (grammar) ->
     return unless @grammars.indexOf(grammar) is -1
     @grammars.push grammar
@@ -217,13 +210,11 @@ class Manager
     @grammars.splice(idx, 1)
 
   registerHelperCommands: ->
-    @disposables.push atom.commands.add 'atom-workspace', 'tern:createTernProjectFile': (event) =>
-      @helper.createTernProjectFile()
-    # @disposables.push atom.commands.add 'atom-text-editor', 'tern:openConfig': (event) =>
-    #   if !@config
-    #     Config = require './atom-ternjs-config'
-    #     @config = new Config(this)
-    #   @config.show()
+    @disposables.push atom.commands.add 'atom-workspace', 'tern:openConfig': (event) =>
+      if !@config
+        Config = require './atom-ternjs-config'
+        @config = new Config(this)
+      @config.show()
 
   registerCommands: ->
     @disposables.push atom.commands.add 'atom-text-editor', 'tern:rename': (event) =>

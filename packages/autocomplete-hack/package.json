@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-hack",
   "main": "./lib/autocomplete-hack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HackLang AutoCompletion for Atom Editor.",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "atom": ">=0.188.0 <2.0.0"
   },
   "dependencies": {
-    "node-ssh": "latest",
     "string_score": "latest"
   },
   "providedServices": {
@@ -38,73 +37,13 @@
     "url": "https://github.com/steelbrain/autocomplete-hack/issues"
   },
   "homepage": "https://github.com/steelbrain/autocomplete-hack",
-  "_id": "autocomplete-hack@1.0.0",
-  "_shasum": "27275500547faae76945381434e1e6504bb3efd3",
-  "_resolved": "file:../d-115510-17801-sv0t8n/package.tgz",
-  "_from": "../d-115510-17801-sv0t8n/package.tgz",
+  "_id": "autocomplete-hack@1.0.1",
+  "_shasum": "51559ca6ca5cf66b6676223b9182fc68bfe29f06",
+  "_resolved": "file:../d-115626-2045-9k78z5/package.tgz",
+  "_from": "../d-115626-2045-9k78z5/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
-      {
-        "name": "node-ssh",
-        "version": "0.2.5",
-        "path": "node_modules/node-ssh/Dist/SSH.js"
-      },
-      {
-        "name": "a-promise",
-        "version": "1.0.0",
-        "path": "node_modules/node-ssh/node_modules/a-promise/Main.js"
-      },
-      {
-        "name": "ssh2",
-        "version": "0.4.8",
-        "path": "node_modules/node-ssh/node_modules/ssh2/lib/client.js"
-      },
-      {
-        "name": "readable-stream",
-        "version": "1.0.33",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/readable.js"
-      },
-      {
-        "name": "core-util-is",
-        "version": "1.0.1",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js"
-      },
-      {
-        "name": "inherits",
-        "version": "2.0.1",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/inherits/inherits.js"
-      },
-      {
-        "name": "isarray",
-        "version": "0.0.1",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/isarray/index.js"
-      },
-      {
-        "name": "string_decoder",
-        "version": "0.10.31",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/string_decoder/index.js"
-      },
-      {
-        "name": "ssh2-streams",
-        "version": "0.0.14",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/index.js"
-      },
-      {
-        "name": "asn1",
-        "version": "0.2.2",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/index.js"
-      },
-      {
-        "name": "jsbn",
-        "version": "0.0.0",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/jsbn/index.js"
-      },
-      {
-        "name": "streamsearch",
-        "version": "0.1.2",
-        "path": "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/streamsearch/lib/sbmh.js"
-      },
       {
         "name": "string_score",
         "version": "0.1.22",
@@ -114,116 +53,17 @@
     "extensions": {
       ".coffee": [
         "lib/autocomplete-hack.coffee",
-        "node_modules/node-ssh/Source/SSH.coffee",
         "node_modules/string_score/coffee/string_score.coffee"
       ],
-      ".js": [
-        "node_modules/node-ssh/Dist/SSH.js",
-        "node_modules/node-ssh/node_modules/a-promise/Dist/Promise.js",
-        "node_modules/node-ssh/node_modules/a-promise/Main.js",
-        "node_modules/node-ssh/node_modules/a-promise/Source/Promise.js",
-        "node_modules/node-ssh/node_modules/ssh2/examples/server-chat.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/Channel.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/SFTPWrapper.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/agent.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/client.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/keepalivemgr.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/server.js",
-        "node_modules/node-ssh/node_modules/ssh2/lib/utils.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/duplex.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib/_stream_duplex.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib/_stream_passthrough.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib/_stream_readable.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib/_stream_transform.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib/_stream_writable.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/core-util-is/util.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/inherits/inherits.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/inherits/inherits_browser.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/inherits/test.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/isarray/build/build.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/isarray/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/string_decoder/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/passthrough.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/readable.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/transform.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/writable.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib/constants.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib/keyParser.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib/sftp.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib/ssh.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib/utils.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/ber/errors.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/ber/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/ber/reader.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/ber/types.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/ber/writer.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/lib/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/tst/ber/reader.test.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/tst/ber/writer.test.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/jsbn/example.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/jsbn/index.js",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/streamsearch/lib/sbmh.js",
-        "node_modules/string_score/string_score.js",
-        "node_modules/string_score/string_score.min.js"
-      ],
       ".json": [
-        "node_modules/node-ssh/node_modules/a-promise/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/core-util-is/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/inherits/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/isarray/component.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/isarray/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/node_modules/string_decoder/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/asn1/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/jsbn/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/node_modules/streamsearch/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/package.json",
-        "node_modules/node-ssh/node_modules/ssh2/package.json",
-        "node_modules/node-ssh/package.json",
         "node_modules/string_score/package.json",
         "package.json"
+      ],
+      ".js": [
+        "node_modules/string_score/string_score.js",
+        "node_modules/string_score/string_score.min.js"
       ]
     },
-    "folders": [
-      {
-        "paths": [
-          "node_modules/node-ssh/node_modules/ssh2/examples",
-          "node_modules/node-ssh/node_modules/ssh2/lib",
-          "node_modules/node-ssh/node_modules/ssh2",
-          "node_modules/node-ssh/node_modules/ssh2/test"
-        ],
-        "dependencies": {
-          "readable-stream": "~1.0.0",
-          "ssh2-streams": "~0.0.5"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream",
-          "node_modules/node-ssh/node_modules/ssh2/node_modules/readable-stream/lib"
-        ],
-        "dependencies": {
-          "core-util-is": "~1.0.0",
-          "isarray": "0.0.1",
-          "string_decoder": "~0.10.x",
-          "inherits": "~2.0.1"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams",
-          "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/lib",
-          "node_modules/node-ssh/node_modules/ssh2/node_modules/ssh2-streams/test"
-        ],
-        "dependencies": {
-          "readable-stream": "~1.0.0",
-          "streamsearch": "~0.1.2",
-          "asn1": "~0.2.0",
-          "jsbn": "*"
-        }
-      }
-    ]
+    "folders": []
   }
 }

@@ -1,7 +1,6 @@
 "*":
   editor:
-    invisibles:
-      {}
+    invisibles: {}
     fontFamily: "Ubuntu Mono"
     showIndentGuide: true
     softWrap: true
@@ -12,7 +11,6 @@
       "project-manager"
       "remember-session"
       "ternjs"
-      "autocomplete-hack"
       "markdown-preview"
     ]
     audioBeep: false
@@ -46,25 +44,20 @@
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
     removeTrailingWhitespace: false
-  "apathy-theme":
-    {}
+  "apathy-theme": {}
   "tool-bar":
     position: "Left"
     iconSize: "16px"
-  "flex-tool-bar":
-    {}
-  "highlight-selected":
-    {}
-  docblockr:
-    {}
+  "flex-tool-bar": {}
+  "highlight-selected": {}
+  docblockr: {}
   "linter-shellcheck":
     shellcheckExecutablePath: "/usr/bin/shellcheck"
   "autocomplete-plus":
     backspaceTriggersAutocomplete: true
   "git-projects":
     rootPath: "/home/luke"
-  "atom-ternjs":
-    {}
+  "atom-ternjs": {}
   "gist-it":
     userToken: "d570a034523545662940ef89df469975f6e1a4f4"
   tabs:
@@ -74,3 +67,4 @@
     openProjectFindResultsInRightPane: true
   "tree-view":
     showOnRightSide: true
+  platomformio: {}

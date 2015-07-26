@@ -2,7 +2,7 @@
   "name": "apathy-theme",
   "theme": "syntax",
   "main": "./lib/apathy",
-  "version": "1.4.6",
+  "version": "1.6.4",
   "description": "The last syntax theme you'll ever download.",
   "repository": {
     "type": "git",
@@ -28,10 +28,10 @@
     "url": "https://github.com/coopermaruyama/apathy-theme/issues"
   },
   "homepage": "https://github.com/coopermaruyama/apathy-theme",
-  "_id": "apathy-theme@1.4.6",
-  "_shasum": "23073d21b30187a37f84ccd03b36c4b92e862b9a",
-  "_resolved": "file:../d-11559-8780-1eeo6ps/package.tgz",
-  "_from": "../d-11559-8780-1eeo6ps/package.tgz",
+  "_id": "apathy-theme@1.6.4",
+  "_shasum": "93b7eb6b956fb73d5c6d7e4d2b5a504d7a0a088d",
+  "_resolved": "file:../d-115626-2025-tcz3dk/package.tgz",
+  "_from": "../d-115626-2025-tcz3dk/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -97,7 +97,7 @@
       },
       {
         "name": "amdefine",
-        "version": "0.1.1",
+        "version": "1.0.0",
         "path": "node_modules/atom-space-pen-views/node_modules/space-pen/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js"
       },
       {
@@ -190,7 +190,8 @@
       ],
       ".coffee": [
         "lib/apathy-view.coffee",
-        "lib/apathy.coffee"
+        "lib/apathy.coffee",
+        "lib/config.coffee"
       ],
       ".js": [
         "node_modules/atom-space-pen-views/lib/main.js",

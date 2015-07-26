@@ -17,8 +17,7 @@ describe "Utils", ->
 
   describe "sortBy", ->
     it "sorts by name when sortBy == 'Project name'", ->
-      atom.config.set('git-projects.sortBy', 'Project name')
-      expect(utils.sortBy(projects)).toEqual(projectsSortedByName)
+      expect(utils.sortBy('Project name', projects)).toEqual(projectsSortedByName)
 
   describe "parsePathString", ->
     it "should be a function",
@@ -33,7 +32,7 @@ describe "Utils", ->
       expect(wrapper null).toThrow
 
     it "should return a Set", ->
-      expect(utils.parsePathString("")).toEqual(new Set)
+      expect(utils.parsePathString("")).toEqual(new Set(["."]))
       expect(utils.parsePathString("path").size).toBe(1)
       expect(utils.parsePathString("path; another_path").size).toBe(2)
       expect(utils.parsePathString("same_path; same_path").size).toBe(1)
