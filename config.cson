@@ -12,6 +12,8 @@
       "remember-session"
       "ternjs"
       "markdown-preview"
+      "autocomplete-hack"
+      "language-hack"
     ]
     audioBeep: false
     destroyEmptyPanes: false
