@@ -32,8 +32,8 @@
   "homepage": "https://github.com/vigetlabs/platomformio",
   "_id": "platomformio@0.3.0",
   "_shasum": "b955f059f5c7836a4feced3c343af128a53d081c",
-  "_resolved": "file:../d-115626-9277-bcypuz/package.tgz",
-  "_from": "../d-115626-9277-bcypuz/package.tgz",
+  "_resolved": "file:../d-115630-11762-1j0pagm/package.tgz",
+  "_from": "../d-115630-11762-1j0pagm/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
